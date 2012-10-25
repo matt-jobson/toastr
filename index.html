@@ -18,7 +18,7 @@
 	<body style="padding: 30px" class="container">
 		<section class="row">
 			<h1>toastr</h1>
-
+			<div id="alerts"></div>
 			<div class="well row">
 				<div class="row span11">
 					<div class="span4">
@@ -49,6 +49,7 @@
 								<label class="radio"><input type="radio" name="positions" value="toast-bottom-right"/>Bottom Right</label>
 								<label class="radio"><input type="radio" name="positions" value="toast-bottom-left"/>Bottom Left</label>
 								<label class="radio"><input type="radio" name="positions" value="toast-top-left"/>Top Left</label>
+								<label class="radio"><input type="radio" name="positions" value="toast-inline"/>Inline</label>
 							</div>                         
 						</div>                                                                
 					</div>
@@ -138,7 +139,10 @@
 						tapToDismiss: $('#tapToDismiss').prop('checked'),
 						positionClass: $('#positionGroup input:radio:checked').val() || 'toast-top-right'
 					}
-
+					
+					toastr.options.maxAlerts = 3;
+					toastr.options.location = '#alerts';
+					
 					if ($fadeIn.val().length) {
 						toastr.options.fadeIn = +$fadeIn.val()
 					}
